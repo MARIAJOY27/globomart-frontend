@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<div class="row w-100 mb-5" style="margin-top: 110px;">
+    <div class="col-md-6 d-flex justify-content-center">
+        <img src="https://t3.ftcdn.net/jpg/03/33/09/48/360_F_333094804_mh9eemsmYeVMZWqpQixIPvHUZfctWLG8.jpg" alt="" class="w-75">
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+        <form *ngIf="!paymentStatus" [formGroup]="checkOutForm" class="border p-md-5 p-3 mt-5 rounded w-75 shadow" style="background-image: linear-gradient(to right , white,rgb(189, 180, 180));">
+            <h3 class="text-center mb-3">Delivery Address</h3>
+
+            <div class="mb-3 mt-4">
+                <input type="text" placeholder="Name" class="form-control" formControlName="uname" name="uname">
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Apartment Number" class="form-control" formControlName="flat" name="flat">
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Location" class="form-control" formControlName="place" name="place">
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Pincode" class="form-control" formControlName="pincode" name="code">
+            </div>
+            <div class="mb-3 d-flex justify-content-between">
+                <button class="btn btn-warning" (click)="cancel()">Cancel</button>
+                <button class="btn btn-success" (click)="confirmAddress()">Confirm Address</button>
+            </div>
+        </form>
+
+        <div *ngIf="paymentStatus" class="border rounded shadow p-4 w-75">
+            <h3 class="text-danger">Confirm Delivery Address</h3>
+            <h5>Name: <span class="text-secondary ms-2">{{checkOutForm.value.uname}}</span></h5>
+            <h5>Apartment Number: <span class="text-secondary ms-2">{{checkOutForm.value.flat}}</span> </h5>
+            <h5>Place Of Delivery: <span class="text-secondary ms-2">{{checkOutForm.value.place}} </span></h5>
+            <h5>Pincode: <span class="text-secondary ms-2">{{checkOutForm.value.pincode}}</span></h5>
+            <h5>Grand Total:<span class="text-secondary ms-2">$ {{grandTotal}}</span> </h5>
+
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-warning" (click)="back()">Back</button>
+                <button class="btn btn-success" (click)="payment()">Make Payment</button>
+            </div>
+            <div *ngIf="payStatus" class="mt-4">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div style="overflow-x: hidden;">
+    <div class="row my-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 mt-2">
+            <div class="shadow p-5">
+                <div class="text-center">
+                    <img src="https://www.shutterstock.com/shutterstock/photos/264245024/display_1500/stock-vector-user-login-or-authenticate-icon-vector-login-icon-authentication-key-privacy-profile-system-264245024.jpg" style="border-radius: 50%;" width="70px" height="70px" alt="">
+                   <h4 class=" p-4" style="color: red;">Join Our Family</h4>
+                </div>
+               <form class="shadow p-3" [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="mb-3 px-3">
+                    <input type="text" placeholder="Enter Username" class="form-control" formControlName="username" name="uname" >
+                    <span *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="text-warning">Invalid Username</span>
+                </div>
+                <div class="mb-3 px-3">
+                    <input type="text" placeholder="Enter Email" class="form-control" formControlName="email" name="mail">
+                    <span *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-warning">Invalid Email</span>
+                </div>
+                <div class="mb-3 px-3">
+                    <input type="text" placeholder="Enter Password" class="form-control" formControlName="password" name="upswd">
+                    <span *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-warning">Invalid Password</span>
+                </div>
+                <div class="mb-3 px-3">
+                    <button type="submit" class="w-100 p-1 rounded bg-danger text-light" style="border: none;">Sign Up</button>
+                </div>
+
+               </form>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2">
+            <div class="shadow">
+                <div>
+                    <img src="https://img.freepik.com/free-photo/smiling-young-caucasian-girl-holds-packages-both-hands-looks-camera-isolated-pink-background_141793-34597.jpg" alt="" height="335px" class="w-100">
+                    <div class="text-center">
+                        <h4 class="mt-4 text-danger">Already Have An Account?</h4>
+                        <button routerLink="/login"  class="w-25 mb-5 p-1 rounded  justify-content-center align-items-center mt-3 text-light " style="border: none;background-color: rgb(66, 13, 13);">SIGN IN</button></div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
